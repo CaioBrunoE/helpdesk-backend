@@ -2,9 +2,9 @@ package com.caiobruno.helpdesk.domain.enums;
 
 public enum Status {
    
-	ABERTO(0 ,"ROLE_ABERTO"),
-	ANDAMENTO(1,"ROLE_ANDAMENTO"),
-	ENCERRADO(2,"ROLE_ENCERRADO");
+	ABERTO(0 ,"ABERTO"),
+	ANDAMENTO(1,"ANDAMENTO"),
+	ENCERRADO(2,"ENCERRADO");
 	
 	private Integer codigo;
 	private String descricao;
@@ -40,7 +40,7 @@ public enum Status {
 			}
 		}
 		
-		throw new  IllegalArgumentException("Perfil invalido");
+		throw new  IllegalArgumentException("Status invalido");
 	}
 	
 	
