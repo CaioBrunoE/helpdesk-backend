@@ -154,8 +154,8 @@ public abstract class Pessoa implements Serializable{
 	}
 
 
-	public void addPerfil() {
-		
+	public void addPerfil(Perfil perfil) {
+		setPerfils(perfil);
 	}
 	
 	
