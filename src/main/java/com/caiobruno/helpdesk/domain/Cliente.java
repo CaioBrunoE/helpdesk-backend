@@ -3,20 +3,27 @@ package com.caiobruno.helpdesk.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.caiobruno.helpdesk.domain.enums.Perfil;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 
-public class Cliente  extends Pessoa {
-
+@Entity
+public class Cliente  extends Pessoa  {
+	private static final long serialVersionUID = 1L;
+	
+	@OneToMany(mappedBy = "cliente")
 	private List<Chamado> chamados = new ArrayList<>();
 
 	public Cliente() {
 		super();
-		
+		setPerfils(Perfil.CLIENTE);
 	}
 
-	public Cliente(Integer id, String nome, String cpf, String email, String senha) {
+	public Cliente(Integer id, String nome, String cpf, String email, String senha ) {
 		super(id, nome, cpf, email, senha);
-		
+		setPerfils(Perfil.CLIENTE);
 	}
 
 	public List<Chamado> getChamados() {
