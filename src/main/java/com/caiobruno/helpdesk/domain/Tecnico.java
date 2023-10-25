@@ -19,12 +19,12 @@ public class Tecnico extends Pessoa{
 
 	public Tecnico( ) {
 		super();
-	    setPerfils(Perfil.TECNICO);
+	    
 	}
 
 	public Tecnico(Integer id, String nome, String cpf, String email, String senha) {
 		super(id, nome, cpf, email, senha);
-		setPerfils(Perfil.TECNICO);
+		
 	}
 
 	
