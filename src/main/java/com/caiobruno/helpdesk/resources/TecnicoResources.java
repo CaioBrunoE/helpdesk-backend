@@ -18,6 +18,8 @@ import com.caiobruno.helpdesk.domain.Tecnico;
 import com.caiobruno.helpdesk.domain.dtos.TecnicoDto;
 import com.caiobruno.helpdesk.services.TecnicoServices;
 
+import jakarta.validation.Valid;
+
 
 
 @RestController
@@ -42,10 +44,11 @@ public class TecnicoResources {
 	}
 	
 	@PostMapping
-	public ResponseEntity<TecnicoDto> create(@RequestBody TecnicoDto objDTO){
+	public ResponseEntity<TecnicoDto> create(@Valid @RequestBody TecnicoDto objDTO){
           Tecnico newobj = services.create(objDTO);
           URI  uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newobj.getId()).toUri();
           return ResponseEntity.created(uri).body(objDTO);
- 
+  
+          
 	}
 }
