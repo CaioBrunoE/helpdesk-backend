@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Profile;
 
 import com.caiobruno.helpdesk.services.DBService;
 
-import jakarta.validation.Valid;
-
 @Configuration
 @Profile("dev")
 public class Devconfig2 {

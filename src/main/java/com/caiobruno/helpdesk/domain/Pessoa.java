@@ -50,7 +50,6 @@ public abstract class Pessoa implements Serializable{
 
 	public Pessoa () {
 		super();
-		setPerfils(Perfil.CLIENTE);
 	}
 	
 
@@ -60,8 +59,7 @@ public abstract class Pessoa implements Serializable{
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
-		this.senha = senha;
-		setPerfils(Perfil.CLIENTE);
+		this.senha = senha;	
 	}
 
 

@@ -3,7 +3,6 @@ package com.caiobruno.helpdesk.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.caiobruno.helpdesk.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.caiobruno.helpdesk.domain.Tecnico;
@@ -26,6 +25,7 @@ public class TecnicoDto implements Serializable {
 
 	public TecnicoDto() {
 		super();
+		this.perfils.add(2);
 	}
 
 	public TecnicoDto(Tecnico obj) {
@@ -37,6 +37,7 @@ public class TecnicoDto implements Serializable {
 		this.senha = obj.getSenha();
 		this.perfils = obj.getPerfils().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
 		this.dataCriacao = obj.getDataCriacao();
+	    this.perfils.add(2);
 	}
 
 	public Integer getId() {

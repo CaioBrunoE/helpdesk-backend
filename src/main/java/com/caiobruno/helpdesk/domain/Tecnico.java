@@ -2,8 +2,9 @@ package com.caiobruno.helpdesk.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import com.caiobruno.helpdesk.domain.enums.Perfil;
+import com.caiobruno.helpdesk.domain.dtos.TecnicoDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -26,7 +27,17 @@ public class Tecnico extends Pessoa{
 		super(id, nome, cpf, email, senha);
 		
 	}
-
+     
+	public Tecnico(TecnicoDto obj) {
+		super();
+		this.id = obj.getId();
+		this.nome =obj.getNome();
+		this.cpf = obj.getCpf();
+		this.email = obj.getEmail();
+		this.senha = obj.getSenha();
+		this.perfils = obj.getPerfils().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+		this.dataCriacao = obj.getDataCriacao();
+	}
 	
 	public List<Chamado> getChamados() {
 		return chamados;
