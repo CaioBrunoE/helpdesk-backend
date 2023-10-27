@@ -14,6 +14,8 @@ import com.caiobruno.helpdesk.repositories.TecnicoRepository;
 import com.caiobruno.helpdesk.services.exceptions.DataIntegrityViolationException;
 import com.caiobruno.helpdesk.services.exceptions.ObjectNotFoundException;
 
+import jakarta.validation.Valid;
+
 @Service
 public class TecnicoServices {
 
@@ -39,6 +41,14 @@ public class TecnicoServices {
 		return repository.save(newObj);
 
 	}
+	
+	public Tecnico update(Integer id, @Valid TecnicoDto objDto) {
+		objDto.setId(id);
+		Tecnico oldObj =  findById(id);
+		validarPorCpfEmail(objDto);
+		oldObj = new Tecnico(objDto);
+		return repository.save(oldObj);
+	}
 
 	private void validarPorCpfEmail(TecnicoDto objDTO) {
 		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
@@ -53,4 +63,6 @@ public class TecnicoServices {
 			throw new DataIntegrityViolationException("Email ja cadastrado ");
 		}
 	}
+
+	
 }

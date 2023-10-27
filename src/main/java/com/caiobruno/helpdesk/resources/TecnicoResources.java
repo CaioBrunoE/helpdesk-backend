@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +49,12 @@ public class TecnicoResources {
           Tecnico newobj = services.create(objDTO);
           URI  uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newobj.getId()).toUri();
           return ResponseEntity.created(uri).body(objDTO);
-  
-          
+   
+	}
+	
+	@PutMapping(value="/{id}")
+	public ResponseEntity<TecnicoDto> update(@PathVariable Integer id , @Valid @RequestBody TecnicoDto objDto){
+		Tecnico obj =services.update(id, objDto);
+		return ResponseEntity.ok().body(new TecnicoDto(obj));
 	}
 }
