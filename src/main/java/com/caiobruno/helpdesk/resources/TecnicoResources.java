@@ -45,7 +45,7 @@ public class TecnicoResources {
 	public ResponseEntity<TecnicoDto> create(@RequestBody TecnicoDto objDTO){
           Tecnico newobj = services.create(objDTO);
           URI  uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newobj.getId()).toUri();
-          return ResponseEntity.created(uri).build();
+          return ResponseEntity.created(uri).body(objDTO);
  
 	}
 }
